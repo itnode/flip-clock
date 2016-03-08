@@ -41,8 +41,6 @@ A flip clock, timer and countdown made with Polymer
       color: #fff;
       box-shadow: 1px 1px 1px #555;
       background-color: #333;
-      background: -webkit-linear-gradient(top, #333 0%, #444 50%, #333 51%, #222 100%);
-      background: linear-gradient(to bottom, #333 0%,#444 50%,#333 51%,#222 100%);
     }
     #clock .num:after {
       content: '';
@@ -57,8 +55,11 @@ A flip clock, timer and countdown made with Polymer
       color: #333;
       margin-right: 10px;
     }
+    .buttons {
+      margin: 20px 0 10px 0;
+    }
     .btn {
-      margin: 20px 10px 10px 10px;
+      margin: 0 10px;
       padding: 5px 10px;
       border: 1px solid #000;
       border-radius: 2px;
@@ -79,12 +80,11 @@ A flip clock, timer and countdown made with Polymer
       <span hidden$="[[hideSeconds]]">
         <b>:</b><span class="num" id="seconds0">[[time.4]]</span><span class="num" id="seconds1">[[time.5]]</span>
       </span>
-
     </div>
     <div class="buttons" hidden$="[[!showButtons]]">
-      <button class="toggle btn" on-click="_startCount" disabled$="[[isRunning]]">Start</button>
-      <button class="toggle btn" on-click="_stopCount">Stop</button>
-      <button class="reset btn" on-click="_resetCount">Reset</button>
+      <button role="button" class="toggle btn" on-click="_startCount" disabled$="[[isRunning]]">Start</button>
+      <button role="button" class="toggle btn" on-click="_stopCount">Stop</button>
+      <button role="button" class="reset btn" on-click="_resetCount">Reset</button>
     </div>
   </template>
 </dom-module>
