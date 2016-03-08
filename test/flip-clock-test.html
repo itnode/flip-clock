@@ -75,6 +75,13 @@
           expect(countdown.time).to.be.equal('002000')
         });
       });
+
+      context('accessibility tests', function() {
+        a11ySuite('clock');
+        a11ySuite('timer');
+        a11ySuite('countdown');
+      });
+
     });
   </script>
 </body>
