@@ -2,22 +2,18 @@
 
 # &lt;flip-countdown&gt;
 
-A flip clock, timer and countdown made with [Polymer](http://polymer-project.org) and [Moment.js](https://github.com/moment/momentjs.com)
-
-## Documentation and Demo
-
-See the [component page](http://Granze.github.io/flip-countdown) for more information.
+A flip countdown made with [Polymer](http://polymer-project.org) and [Moment.js](https://github.com/moment/momentjs.com)
 
 ## Screenshot 
 
-![Flip Clock](http://i.imgur.com/r5RBxL1.png)
+![Flip Clock](preview.png)
 
 ## Installation
 
 Install using [Bower](http://bower.io):
 
 ```shell
- bower install flip-countdown
+ bower install github.com/itnode/flip-countdown
 ```
 
 ##test
