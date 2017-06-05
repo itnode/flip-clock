@@ -1,12 +1,12 @@
-[![Build Status](https://travis-ci.org/Granze/flip-clock.svg?branch=master)](https://travis-ci.org/Granze/flip-clock)
+[![Build Status](https://travis-ci.org/Granze/flip-countdown.svg?branch=master)](https://travis-ci.org/Granze/flip-countdown)
 
-# &lt;flip-clock&gt;
+# &lt;flip-countdown&gt;
 
 A flip clock, timer and countdown made with [Polymer](http://polymer-project.org) and [Moment.js](https://github.com/moment/momentjs.com)
 
 ## Documentation and Demo
 
-See the [component page](http://Granze.github.io/flip-clock) for more information.
+See the [component page](http://Granze.github.io/flip-countdown) for more information.
 
 ## Screenshot 
 
@@ -17,7 +17,7 @@ See the [component page](http://Granze.github.io/flip-clock) for more informatio
 Install using [Bower](http://bower.io):
 
 ```shell
- bower install flip-clock
+ bower install flip-countdown
 ```
 
 ##test
@@ -28,7 +28,7 @@ Install [web-component-tester](https://github.com/Polymer/web-component-tester) 
  npm install -g web-component-tester
 ```
 
-cd in the flip-clock folder and run ```wct```. That's it!
+cd in the flip-countdown folder and run ```wct```. That's it!
 
 ## License
 

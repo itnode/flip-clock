@@ -1,11 +1,11 @@
 {
-  "name": "flip-clock",
+  "name": "flip-countdown",
   "version": "1.0.0",
   "keywords": [
     "polymer",
     "web-components"
   ],
-  "main": "flip-clock.html",
+  "main": "flip-countdown.html",
   "dependencies": {
     "moment": "~2.13.0",
     "moment-precise-range": "itnode/moment-precise-range#~1.0.0",
@@ -16,9 +16,9 @@
     "iron-test-helpers": "polymerelements/iron-test-helpers#~1.2.3",
     "iron-component-page": "polymerelements/iron-component-page#~1.1.2"
   },
-  "homepage": "https://github.com/itnode/flip-clock",
+  "homepage": "https://github.com/itnode/flip-countdown",
   "authors": [
-    "Maurizio Mangione <granzebru@gmail.com>"
+    "Maurizio Mangione <granzebru@gmail.com>",
     "Jens Gassmann <jg@gassmann.it>"
   ],
   "description": "A flip countdown made with Polymer",

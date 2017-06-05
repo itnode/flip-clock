@@ -8,7 +8,7 @@
   <script src="../../test-fixture/test-fixture-mocha.js"></script>
   <script src="../../iron-test-helpers/mock-interactions.js"></script>
 
-  <link rel="import" href="../flip-clock.html">
+  <link rel="import" href="../flip-countdown.html">
   <link rel="import" href="../../test-fixture/test-fixture.html">
 
 </head>
@@ -16,24 +16,24 @@
 
   <test-fixture id="clock">
     <template>
-      <flip-clock></flip-clock>
+      <flip-countdown></flip-countdown>
     </template>
   </test-fixture>
 
   <test-fixture id="timer">
     <template>
-      <flip-clock display-mode="timer"></flip-clock>
+      <flip-countdown display-mode="timer"></flip-countdown>
     </template>
   </test-fixture>
 
   <test-fixture id="countdown">
     <template>
-      <flip-clock start-from="20" display-mode="countdown"></flip-clock>
+      <flip-countdown start-from="20" display-mode="countdown"></flip-countdown>
     </template>
   </test-fixture>
 
   <script>
-    describe('<flip-clock>', function() {
+    describe('<flip-countdown>', function() {
       var clock, timer, countdown, startBtn;
 
       beforeEach(function() {
