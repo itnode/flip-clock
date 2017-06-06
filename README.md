@@ -13,7 +13,7 @@ A flip countdown made with [Polymer](http://polymer-project.org) and [Moment.js]
 Install using [Bower](http://bower.io):
 
 ```shell
- bower install github.com/itnode/flip-countdown
+ bower install itnode/flip-countdown
 ```
 
 ##test
