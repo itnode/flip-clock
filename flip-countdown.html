@@ -70,14 +70,18 @@ A flip clock, timer and countdown made with Polymer
   <template>
     <ul id="clock">
       
-        <li hidden$="[[hideYears]]">
-           <span class="num" id="years0">[[years]]</span>
-           <em>[[stringYear]]</em>
+        <li>
+            <span hidden$="[[hideYears]]">
+                <span class="num" id="years0">[[years]]</span>
+                <em>[[stringYear]]</em>
+            </span>
         </li>
     
-        <li hidden$="[[hideMonths]]">
-          <span class="num" id="months0">[[months]]</span>
-          <em>[[stringMonth]]</em>
+        <li>
+            <span hidden$="[[hideMonths]]">
+                <span class="num" id="months0">[[months]]</span>
+                <em>[[stringMonth]]</em>
+            </span>
         </li>
 
         <li hidden$="[[hideDays]]">
@@ -225,25 +229,55 @@ A flip clock, timer and countdown made with Polymer
     _createCountdown: function() {
 
         this.current = moment();
-   
+        
 
-        var diff = moment.preciseDiff(this.end, this.current, true)
-
+        var diff = moment.preciseDiff(this.end, this.current, true);
+        
         this.years   = this._format(diff.years);
         this.months  = this._format(diff.months);
         this.days    = this._format(diff.days);
         this.hours   = this._format(diff.hours);
         this.minutes = this._format(diff.minutes);
         this.seconds = this._format(diff.seconds);
+        
+        // Check ohne modifikation
+        this.hideYears  = diff.years == 0 || this.hideYears === true ? true : false;
+        this.hideMonths = (diff.months == 0 && diff.years == 0) || this.hideMonths === true ? true : false;
+        this.hideDays = diff.days == 0 && diff.months == 0 && diff.years == 0 ? true : false ;
+        
+        // Funktionsscope da die differenze für das autohide unten genutzt werden muss
+        var diffDays = 0;
+        var diffMonths = 0;
+        
+        //Wenn hideYears inital vom Nutzer gesetzt wurde und dann unten automatisch, wenn Jahre === 0
+        if(this.hideYears === true && this.hideMonths === false && diff.years > 0) {
 
-        this.hideYears  = diff.years == 0 ? true : false;
-        this.hideMonths = diff.months == 0 && diff.years == 0 ? true : false;
-        this.hideDays   = diff.days == 0   && diff.months == 0 && diff.years == 0 ? true : false ;
+            diffMonths = this.end.diff(this.current, 'M');
+            this.years = null;
+            this.months = this._format(diffMonths);
+        }
+        
+        //Wenn hideMonths inital vom Nutzer gesetzt wurde und dann unten automatisch, wenn Monate === 0
+        if(this.hideMonths === true && this.hideYears === true && (diff.months > 0 || diff.years > 0)) {
 
+            diffDays = this.end.diff(this.current, 'd');
+            this.months = 0;
+            this.years = 0;
+            this.days = this._format(diffDays + 1);
+        }
+        
+        // Hier muss das initale hideYears beachtet werden, besser wäre hier eine extra Variable als diese unschöne Logik verdreheung die nie false erlaubt
+        // hideDays wird von außen nicht unterstützt
+        this.hideYears  = diff.years == 0 || this.hideYears === true ? true : false;
+        this.hideMonths = (diff.months + diffMonths == 0 && diff.years == 0) || this.hideMonths === true ? true : false;
+        this.hideDays = diff.days + diffDays == 0 && diff.months + diffMonths == 0 && diff.years == 0 ? true : false ;
+
+        // Kein addieren/subtrahieren nötig, da irrelevant, wenn nicht sichtbar
         this.stringYear  = diff.years > 1 ? "Jahre" : "Jahr";
         this.stringMonth = diff.months > 1 ? "Monate" : "Monat";
-        this.stringDay   = diff.days > 1 ? "Tage" : "Tag";
-        this.stringHour   = diff.days > 1 ? "Stunden" : "Stunde";
+        // Addition nötig da sonst fehlerhaft da diff.days nicht mehr den tatsächlichen Wert darstellt
+        this.stringDay   = diff.days + diffDays > 1 ? "Tage" : "Tag";
+        this.stringHour   = diff.hours > 1 ? "Stunden" : "Stunde";
         this.stringMinute  = diff.minutes > 1 ? "Minuten" : "Minute";
         this.stringSecond  = diff.seconds > 1 ? "Sekunden" : "Sekunde";
 
