@@ -71,37 +71,49 @@ A flip clock, timer and countdown made with Polymer
     <ul id="clock">
       
         <li>
-            <span hidden$="[[hideYears]]">
-                <span class="num" id="years0">[[years]]</span>
-                <em>[[stringYear]]</em>
+            <span hidden$="[[hideAll]]">
+                <span hidden$="[[hideYears]]">
+                    <span class="num" id="years0">[[years]]</span>
+                    <em>[[stringYear]]</em>
+                </span>
             </span>
         </li>
     
         <li>
-            <span hidden$="[[hideMonths]]">
-                <span class="num" id="months0">[[months]]</span>
-                <em>[[stringMonth]]</em>
+            <span hidden$="[[hideAll]]">
+                <span hidden$="[[hideMonths]]">
+                    <span class="num" id="months0">[[months]]</span>
+                    <em>[[stringMonth]]</em>
+                </span>
             </span>
         </li>
 
         <li hidden$="[[hideDays]]">
-             <span class="num" id="days0">[[days]]</span>
-            <em>[[stringDay]]</em>
+            <span hidden$="[[hideAll]]">
+                <span class="num" id="days0">[[days]]</span>
+                <em>[[stringDay]]</em>
+            </span>
         </li>
 
         <li hidden$="[[hideHours]]">
-             <span class="num" id="hours0">[[hours]]</span>
-            <em>[[stringHour]]</em>
+            <span hidden$="[[hideAll]]">
+                <span class="num" id="hours0">[[hours]]</span>
+                <em>[[stringHour]]</em>
+            </span>
         </li>
 
         <li hidden$="[[hideMinutes]]">
-          <span class="num" id="minutes0">[[minutes]] </span>      
-            <em>[[stringMinute]]</em>
+            <span hidden$="[[hideAll]]">
+                <span class="num" id="minutes0">[[minutes]] </span>      
+                <em>[[stringMinute]]</em>
+            </span>
         </li>
 
         <li hidden$="[[hideSeconds]]">
-            <span class="num" id="seconds0">[[seconds]]</span>
-            <em>[[stringSecond]]</em>
+            <span hidden$="[[hideAll]]">
+                <span class="num" id="seconds0">[[seconds]]</span>
+                <em>[[stringSecond]]</em>
+            </span>
         </li>
      </ul>
   </template>
@@ -248,6 +260,10 @@ A flip clock, timer and countdown made with Polymer
         type: Boolean,
         value: false
       },
+      hideAll: {
+        type: Boolean,
+        value: false
+      },
 
         /**
        * Starting minutes for the countdown
@@ -341,6 +357,10 @@ A flip clock, timer and countdown made with Polymer
         this.stringHour   = diff.hours > 1 ? this.labelHours : this.labelHour;
         this.stringMinute  = diff.minutes > 1 ? this.labelMinutes : this.labelMinute;
         this.stringSecond  = diff.seconds > 1 ? this.labelSeconds : this.labelSecond;
+        
+        if(this.current >= this.end) {
+            this.hideAll = true;
+        }
 
         this.async(this._createCountdown, 1000);
     },
