@@ -134,7 +134,68 @@ A flip clock, timer and countdown made with Polymer
     isRunning: false,
 
     properties: {
-      /**
+      
+       labelYears: {
+           type: String,
+           value: "Jahre"
+       },
+      
+       labelMonths: {
+           type: String,
+           value: "Monate"
+       },
+        
+       labelDays: {
+           type: String,
+           value: "Tage"
+       },
+  
+      labelHours: {
+          type: String,
+          value: "Stunden"
+      },
+       
+       labelMinutes: {
+           type: String,
+           value: "Minuten"
+       },
+       
+       labelSeconds: {
+           type: String,
+           value: "Sekunden"
+       },
+  
+      labelYear: {
+          type: String,
+          value: "Jahr"
+      },
+     
+      labelMonth: {
+          type: String,
+          value: "Monat"
+      },
+       
+      labelDay: {
+          type: String,
+          value: "Tag"
+      },
+  
+      labelHour: {
+          type: String,
+          value: "Stunde"
+      },
+      
+      labelMinute: {
+          type: String,
+          value: "Minute"
+      },
+      
+      labelSecond: {
+          type: String,
+          value: "Sekunde"
+      },
+        
+       /**
        * Set the flip clock mode. Possible values are 'timer' and 'countdown'.
        * A clock will be displayed if no value is specified.
        *
@@ -273,13 +334,13 @@ A flip clock, timer and countdown made with Polymer
         this.hideDays = diff.days + diffDays == 0 && diff.months + diffMonths == 0 && diff.years == 0 ? true : false ;
 
         // Kein addieren/subtrahieren nötig, da irrelevant, wenn nicht sichtbar
-        this.stringYear  = diff.years > 1 ? "Jahre" : "Jahr";
-        this.stringMonth = diff.months > 1 ? "Monate" : "Monat";
+        this.stringYear  = diff.years > 1 ? this.labelYears : this.labelYear;
+        this.stringMonth = diff.months > 1 ? this.labelMonths : this.labelMonth;
         // Addition nötig da sonst fehlerhaft da diff.days nicht mehr den tatsächlichen Wert darstellt
-        this.stringDay   = diff.days + diffDays > 1 ? "Tage" : "Tag";
-        this.stringHour   = diff.hours > 1 ? "Stunden" : "Stunde";
-        this.stringMinute  = diff.minutes > 1 ? "Minuten" : "Minute";
-        this.stringSecond  = diff.seconds > 1 ? "Sekunden" : "Sekunde";
+        this.stringDay   = diff.days + diffDays > 1 ? this.labelDays : this.labelDay;
+        this.stringHour   = diff.hours > 1 ? this.labelHours : this.labelHour;
+        this.stringMinute  = diff.minutes > 1 ? this.labelMinutes : this.labelMinute;
+        this.stringSecond  = diff.seconds > 1 ? this.labelSeconds : this.labelSecond;
 
         this.async(this._createCountdown, 1000);
     },
